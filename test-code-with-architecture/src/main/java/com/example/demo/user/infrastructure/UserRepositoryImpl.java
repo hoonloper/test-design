@@ -21,21 +21,21 @@ public class UserRepositoryImpl implements UserRepository {
 
   @Override
   public Optional<User> findById(long id) {
-    return userJpaRepository.findById(id).map(UserEntity::toModel);
+    return userJpaRepository.findById(id).map(UserEntity::to);
   }
 
   @Override
   public Optional<User> findByIdAndStatus(long id, UserStatus userStatus) {
-    return userJpaRepository.findByIdAndStatus(id, userStatus).map(UserEntity::toModel);
+    return userJpaRepository.findByIdAndStatus(id, userStatus).map(UserEntity::to);
   }
 
   @Override
   public Optional<User> findByEmailAndStatus(String email, UserStatus userStatus) {
-    return userJpaRepository.findByEmailAndStatus(email, userStatus).map(UserEntity::toModel);
+    return userJpaRepository.findByEmailAndStatus(email, userStatus).map(UserEntity::to);
   }
 
   @Override
   public User save(User user) {
-    return userJpaRepository.save(UserEntity.fromModel(user)).toModel();
+    return userJpaRepository.save(UserEntity.from(user)).to();
   }
 }

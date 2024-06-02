@@ -19,12 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Builder
 public class PostCreateController {
-
     private final PostService postService;
     private final PostController postController;
 
     @PostMapping
-    public ResponseEntity<PostResponse> createPost(@RequestBody PostCreate postCreate) {
+    public ResponseEntity<PostResponse> create(@RequestBody PostCreate postCreate) {
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(PostResponse.from(postService.create(postCreate)));
